@@ -1,5 +1,5 @@
 const mapaFetch = d3.json('barrios-caba.geojson')
-const dataFetch = d3.dsv(';', 'desratizacion2021.csv', d3.autoType)
+const dataFetch = d3.dsv(';', 'sistema-unico-de-atencion-ciudadana-2021.csv', d3.autoType)
 
 Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   
@@ -14,10 +14,13 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       scheme: 'ylorbr',
     },
     marks: [
-      Plot.density(data, { x: 'lon', y: 'lat', fill: 'density',bandwidth: 15, thresholds: 30 }),
+      Plot.density(data.filter(item => item.prestacion == 'DESRATIZAR, DESINSECTAR Y DESINFECTAR EN VÍA PÚBLICA' || 
+                               item.prestacion == 'HIGIENIZACIÓN, DESRATIZACIÓN, SANEAMIENTO DE TERRENO BALDÍO/CASA ABANDONADA' ||
+                               item.prestacion == 'DESINFECCIÓN/DESINSECTACIÓN/DESRATIZACIÓN EN ESTABLECIMIENTO EDUCATIVO ESTATAL'), 
+          { x: 'lon', y: 'lat', fill: 'density',bandwidth: 15, thresholds: 30 }),
       Plot.geo(barrios, {
         stroke: 'gray',
-        title: d => `${d.properties.domicilio_barrio}\n${d.properties.SOLICITUD} denuncias`,
+        title: d => `${d.properties.BARRIOS}\n${d.properties.DENUNCIAS} denuncias`,
       }),
     ],
   })
