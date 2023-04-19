@@ -1,47 +1,48 @@
+// config. números español
+const locale = {
+  decimal: ',',
+  thousands: '.',
+  grouping: [4],
+}
+d3.formatDefaultLocale(locale)
 
-// Load data from CSV file
-const dataFetch = await d3.csv('147_01-07_enero.csv', d3.autoType);
-
-// Extract necessary data for the plot
-const neighborhoods = dataFetch.map((d) => d.neighborhood);
-const rat_complaints_data = dataFetch.map((d) => d.rat_complaints);
-const waste_complaints_data = dataFetch.map((d) => d.waste_complaints);
-
-// Define the data to be plotted
-const plotData = [
-  {
-    x: rat_complaints_data,
-    y: neighborhoods,
-    type: 'bar',
-    name: 'Quejas sobre ratas',
-    orientation: 'h',
-    marker: {
-      color: '#1f77b4',
+d3.dsv(';', '147_desratizacion.csv', d3.autoType).then(data => {
+  console.log(data.filter(item => item.domicilio_barrio == 'PALERMO' || item.domicilio_barrio == 'VILLA URQUIZA' || item.domicilio_barrio == 'CABALLITO'),)
+  // Guardamos el svg generado en la variable chart
+  let chart = Plot.plot({
+    x: {
+      grid: true,
+      tickFormat: d3.format(',.0f'),
     },
-  },
-  {
-    x: waste_complaints_data,
-    y: neighborhoods,
-    type: 'bar',
-    name: 'Quejas sobre residuos',
-    orientation: 'h',
-    marker: {
-      color: '#ff7f0e',
+    y: {
+      label: '',
     },
-  },
-];
-
-// Define the layout of the plot
-const layout = {
-  title: 'Cantidad de quejas por tipo y barrio',
-  xaxis: {
-    title: 'Cantidad de quejas',
-  },
-  yaxis: {
-    title: 'Barrio',
-  },
-  barmode: 'group',
-};
-
-// Render the plot
-Plotly.newPlot('myPlot', plotData, layout);
+    marks: [
+      Plot.barX(
+        data.filter(item => item.estado_del_contacto == 'Cerrado'),
+        Plot.groupY(
+          { x: 'count', title: d => JSON.stringify(d) },
+          {
+            y: 'barrio',
+            sort: { y: 'x', reverse: true },
+          },
+        ),
+      ),
+      Plot.text(
+        data,
+        Plot.groupY(
+          { x: 'count', text: 'count' },
+          {
+            y: 'barrio',
+            textAnchor: 'start',
+            dx: 5,
+          },
+        ),
+      ),
+    ],
+    marginLeft: 200,
+    marginRight: 100,
+  })
+  // Agregamos chart al div#chart de index.html
+  d3.select('#chart').append(() => chart)
+})
