@@ -5,9 +5,9 @@ const locale = {
   grouping: [4],
 }
 d3.formatDefaultLocale(locale)
-
 d3.dsv(';', '147_desratizacion.csv', d3.autoType).then(data => {
-  console.log(data.filter(item => item.domicilio_barrio == 'PALERMO' || item.domicilio_barrio == 'VILLA URQUIZA' || item.domicilio_barrio == 'CABALLITO'),)
+  console.log(data)
+  let cerrado = data.filter(item => (item.domicilio_barrio == 'PALERMO' || item.domicilio_barrio == 'VILLA URQUIZA' || item.domicilio_barrio == 'CABALLITO') && item.estado_del_contacto);
   // Guardamos el svg generado en la variable chart
   let chart = Plot.plot({
     x: {
@@ -19,21 +19,21 @@ d3.dsv(';', '147_desratizacion.csv', d3.autoType).then(data => {
     },
     marks: [
       Plot.barX(
-        data.filter(item => item.estado_del_contacto == 'Cerrado'),
+        cerrado.filter(item => item.estado_del_contacto == 1),
         Plot.groupY(
           { x: 'count', title: d => JSON.stringify(d) },
           {
-            y: 'barrio',
+            y: 'domicilio_barrio',
             sort: { y: 'x', reverse: true },
           },
         ),
       ),
       Plot.text(
-        data,
+        cerrado,
         Plot.groupY(
           { x: 'count', text: 'count' },
           {
-            y: 'barrio',
+            y: 'domicilio_barrio',
             textAnchor: 'start',
             dx: 5,
           },
