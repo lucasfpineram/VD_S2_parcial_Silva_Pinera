@@ -8,8 +8,13 @@ d3.formatDefaultLocale(locale)
 d3.dsv(';', '147_desratizacion.csv', d3.autoType).then(data => {
   console.log(data)
   let cerrado = data.filter(item => (item.domicilio_barrio == 'PALERMO' || item.domicilio_barrio == 'VILLA URQUIZA' || item.domicilio_barrio == 'CABALLITO') && item.estado_del_contacto);
+  // Crear un arreglo de colores
+  const colors = ['red', 'blue', 'green', 'yellow', 'purple'];
   // Guardamos el svg generado en la variable chart
   let chart = Plot.plot({
+    width: 800, // Ancho del gráfico
+    height: 300,
+    fontSize: '20px',
     x: {
       grid: true,
       tickFormat: d3.format(',.0f'),
@@ -25,6 +30,10 @@ d3.dsv(';', '147_desratizacion.csv', d3.autoType).then(data => {
           {
             y: 'domicilio_barrio',
             sort: { y: 'x', reverse: true },
+          },
+          { 
+            // Utilizar la posición de la barra en el arreglo de colores
+            color: (d, i) => colors[i % colors.length],
           },
         ),
       ),
