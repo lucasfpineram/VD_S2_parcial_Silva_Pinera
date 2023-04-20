@@ -28,14 +28,14 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       // Quantize continuo (cant. denuncias) -> discreto (cant. colores)
       type: 'quantize', 
       n: 10,
-      scheme: 'ylorbr',
+      scheme: 'YlGnBu',
       label: 'Cantidad de denuncias',
       legend: true,
     },
     marks: [
       Plot.geo(barrios, {
         fill: d => d.properties.DENUNCIAS,
-        stroke: 'gray',
+        stroke: 'grey',
         title: d => `${d.properties.BARRIO}\n${d.properties.DENUNCIAS} denuncias`,
       }),
       Plot.text(
