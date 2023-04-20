@@ -18,15 +18,26 @@ d3.dsv(';', '147_desratizacion.csv', d3.autoType).then(data => {
             casosCerrados,
             Plot.groupX({ y: "count" }, 
             { x: "mes_fecha_cierre",
-              stroke:"domicilio_barrio" })
+              stroke:"domicilio_barrio",
+             })
           )
         ],
+    x: {
+      label: "Mes de Fecha de Cierre"
+    },
+
     y: {
-      label: "Price normalized by sum value"
+      label: "Suma de Solicitudes Cerradas"
     },
     height: 200,
     width: 714, 
-    color: { legend: true }
+    color: { legend: true },
+    marginLeft: 80,
+    marginRight: 80,
+    marginTop: 30,
+    marginBottom: 50,
+    grid: true,
+    line: true,
   })
 
   d3.select('#chart').append(() => chart)
