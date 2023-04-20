@@ -6,7 +6,7 @@ d3.dsv(';','147_desratizacion.csv', d3.autoType).then(data => {
       Plot.groupY({
         x:
         "sum"
-          }{
+          },{
         y: 'domicilio_barrio',
         x: 'estado_del_contacto',
         sort: { y: 'x', reverse: true, limit: 10 },
