@@ -5,7 +5,7 @@ const locale = {
   grouping: [4],
 }
 d3.formatDefaultLocale(locale)
-d3.dsv(';', '147_desratizacion_01.csv', d3.autoType).then(data => {
+d3.dsv(';', 'data/147_desratizacion_01.csv', d3.autoType).then(data => {
   console.log(data)
   let cerrado = data.filter(item => (item.domicilio_barrio == 'PALERMO' || item.domicilio_barrio == 'VILLA URQUIZA' || item.domicilio_barrio == 'CABALLITO') && item.estado_del_contacto);
   // Guardamos el svg generado en la variable chart
@@ -57,6 +57,5 @@ d3.dsv(';', '147_desratizacion_01.csv', d3.autoType).then(data => {
     line: true,
   })
   // Agregamos chart al div#chart de index.html
-  d3.select('#chart_barras').append(() => chart)
+  d3.select('#chart_2').append(() => chart)
 })
-

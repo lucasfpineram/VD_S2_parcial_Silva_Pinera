@@ -52,3 +52,4 @@ d3.dsv(';', '147_desratizacion.csv', d3.autoType).then(data => {
   // Agregamos chart al div#chart de index.html
   d3.select('#chart').append(() => chart)
 })
+
