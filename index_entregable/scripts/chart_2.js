@@ -48,11 +48,16 @@ d3.dsv(';', 'data/147_desratizacion_01.csv', d3.autoType).then(data => {
         
       ),
     ],
+    color: { 
+      // range: ['#0087db','#5de162','#e84351']
+      
+      range: ['#c17fc6','#ffc500','#de3d51']
+    },
     marginLeft: 100,
     marginRight: 40,
     // height: 200,
     // width: 714, 
-    // marginTop: 30,
+    marginTop: 50,
     marginBottom: 50,
     line: true,
   })

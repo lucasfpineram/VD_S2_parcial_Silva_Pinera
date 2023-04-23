@@ -27,8 +27,8 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
     color: {
       // Quantize continuo (cant. denuncias) -> discreto (cant. colores)
       type: 'quantize', 
-      n: 10,
-      scheme: 'reds',
+      n: 5,
+      scheme: 'Blues',
       label: 'Cantidad de denuncias',
       legend: true,
     },
@@ -50,6 +50,10 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
         })
       )
     ],
+    marginTop: 20,
+    marginBottom: 20,
+    // marginLeft: 100,
+    // marginRight:0,
   })
 
   /* Agregamos al DOM la visualización chartMap */
