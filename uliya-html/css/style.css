@@ -28,6 +28,16 @@ body {
   padding-bottom: 90px;
 }
 
+.chart_container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.chart {
+  width: 48%;
+}
+
 .heading_container {
   display: -webkit-box;
   display: -ms-flexbox;
