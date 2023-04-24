@@ -25,7 +25,9 @@ d3.dsv(';', 'data/147_desratizacion.csv', d3.autoType).then(data => {
         Plot.groupX({ y: "mean" }, 
         { x: "domicilio_barrio",
           y: "cant_dias_cierre",
-          fill: "domicilio_barrio"
+          fill: "domicilio_barrio",
+        //   title: d => `${d.properties.y} dias`,
+        //   title: d => `${d.properties.BARRIO}\n${d.properties.DENUNCIAS} denuncias`,
         })
       )
     ],
@@ -36,13 +38,14 @@ d3.dsv(';', 'data/147_desratizacion.csv', d3.autoType).then(data => {
       y: {
         label: "Promedio de Días",
         fill: 'domicilio_barrio',
-        domain: [0,5]
+        // domain: [0,5]
+        
       },
       style: {
         backgroundColor: "light bro",
         color: "black",
         fontFamily:"Poppins",
-        fontSize: "20px",
+        fontSize: "14px",
         overflow: "visible"
       }, 
       color: { 

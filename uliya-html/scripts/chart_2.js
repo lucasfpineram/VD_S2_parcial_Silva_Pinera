@@ -52,7 +52,7 @@ d3.dsv(';', 'data/147_desratizacion_01.csv', d3.autoType).then(data => {
       backgroundColor: "light bro",
       color: "black",
       fontFamily:"Poppins",
-      fontSize: "20px",
+      fontSize: "14px",
       overflow: "visible"
     }, 
     color: { 
@@ -65,7 +65,7 @@ d3.dsv(';', 'data/147_desratizacion_01.csv', d3.autoType).then(data => {
     height: 350,
     width: 714, 
     marginTop: 50,
-    marginBottom: 70,
+    marginBottom: 60,
     line: true,
   })
   // Agregamos chart al div#chart de index.html

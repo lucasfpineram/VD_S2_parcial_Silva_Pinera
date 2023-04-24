@@ -25,13 +25,14 @@ d3.dsv(';', 'data/147_desratizacion.csv', d3.autoType).then(data => {
           )
         ],
     x: {
-      label: "Mes de Fecha de Cierre"
+      label: "Mes de Fecha de Cierre",
     },
 
     y: {
       label: "Suma de Solicitudes Cerradas",
       fill: 'domicilio_barrio',
-      domain: [0,35]
+      domain: [0,35],
+      // tickCount: 8,
     },
     style: {
       backgroundColor: "light bro",
@@ -49,12 +50,12 @@ d3.dsv(';', 'data/147_desratizacion.csv', d3.autoType).then(data => {
     },
     marginLeft: 80,
     marginRight: 80,
-    marginTop: 30,
-    marginBottom: 50,
+    marginTop: 60,
+    marginBottom: 70,
     grid: true,
     line: true,
     // columns: null,
-    height: 350,
+    height: 650,
     width: 1500, 
   })
 
