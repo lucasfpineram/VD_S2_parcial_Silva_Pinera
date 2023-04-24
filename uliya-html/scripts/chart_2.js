@@ -48,6 +48,13 @@ d3.dsv(';', 'data/147_desratizacion_01.csv', d3.autoType).then(data => {
         
       ),
     ],
+    style: {
+      backgroundColor: "light bro",
+      color: "black",
+      fontFamily:"Poppins",
+      fontSize: "20px",
+      overflow: "visible"
+    }, 
     color: { 
       // range: ['#0087db','#5de162','#e84351']
       
@@ -55,10 +62,10 @@ d3.dsv(';', 'data/147_desratizacion_01.csv', d3.autoType).then(data => {
     },
     marginLeft: 100,
     marginRight: 40,
-    // height: 200,
-    // width: 714, 
+    height: 350,
+    width: 714, 
     marginTop: 50,
-    marginBottom: 50,
+    marginBottom: 70,
     line: true,
   })
   // Agregamos chart al div#chart de index.html

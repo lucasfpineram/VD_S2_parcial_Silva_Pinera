@@ -36,10 +36,10 @@ d3.dsv(';', 'data/147_desratizacion.csv', d3.autoType).then(data => {
     style: {
       backgroundColor: "light bro",
       color: "black",
-      fontFamily: "sans-serif",
-      fontSize: "12px",
+      fontFamily:"Poppins",
+      fontSize: "22px",
       overflow: "visible"
-    },
+    }, 
     // height: 200,
     // width: 714, 
     color: { 
@@ -53,9 +53,9 @@ d3.dsv(';', 'data/147_desratizacion.csv', d3.autoType).then(data => {
     marginBottom: 50,
     grid: true,
     line: true,
-    columns: null,
-    height: 300,
-    width: 1000
+    // columns: null,
+    height: 350,
+    width: 1500, 
   })
 
   d3.select('#chart_3').append(() => chart)
