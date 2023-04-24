@@ -758,10 +758,6 @@ a:focus {
           align-items: center;
 }
 
-.info_section .info_social h4 {
-  text-transform: uppercase;
-}
-
 .info_section .info_social .social_box {
   display: -webkit-box;
   display: -ms-flexbox;
