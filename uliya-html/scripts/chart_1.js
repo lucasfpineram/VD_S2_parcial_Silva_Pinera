@@ -20,6 +20,13 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   /* Mapa Coroplético */
   let chartMap = Plot.plot({
     // https://github.com/observablehq/plot#projection-options
+    style: {
+      backgroundColor: "light bro",
+      color: "black",
+      fontFamily:"Poppins",
+      fontSize: "10",
+      overflow: "visible",
+    }, 
     projection: {
       type: 'mercator',
       domain: barrios, // Objeto GeoJson a encuadrar
@@ -29,9 +36,10 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
       type: 'quantize', 
       n: 5,
       scheme: 'Blues',
-      label: 'Cantidad de denuncias',
+      label: 'Cantidad de denuncias', 
       legend: true,
     },
+  
     marks: [
       Plot.geo(barrios, {
         fill: d => d.properties.DENUNCIAS,
@@ -45,11 +53,13 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
           fill: "currentColor",
           stroke: "white",
           textAnchor: "center",
-          dx: 4,
+          dx: 1,
           filter: (d) => d.properties.DENUNCIAS > 260
         })
       )
     ],
+    width:510,
+    height:510,
     marginTop: 20,
     marginBottom: 20,
     // marginLeft: 100,
@@ -57,5 +67,5 @@ Promise.all([mapaFetch, dataFetch]).then(([barrios, data]) => {
   })
 
   /* Agregamos al DOM la visualización chartMap */
-  d3.select('#chart').append(() => chartMap)
+  d3.select('#chart_1').append(() => chartMap)
 })
