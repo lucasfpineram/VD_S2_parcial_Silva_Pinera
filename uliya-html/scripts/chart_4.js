@@ -38,7 +38,7 @@ d3.dsv(';', 'data/147_desratizacion.csv', d3.autoType).then(data => {
       y: {
         label: "Promedio de Días",
         fill: 'domicilio_barrio',
-        // domain: [0,5]
+        domain: [0,5]
         
       },
       style: {
