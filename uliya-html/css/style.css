@@ -277,7 +277,8 @@ a:focus {
 }
 
 .slider_section .img-box img {
-  width: 100%;
+  width: 60%;
+  margin-left: 100;
 }
 
 .slider_section .carousel_btn-container {
